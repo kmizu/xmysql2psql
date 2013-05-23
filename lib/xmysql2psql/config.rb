@@ -1,6 +1,6 @@
-require 'mysql2psql/config_base'
+require 'xmysql2psql/config_base'
 
-class Mysql2psql
+class Xmysql2psql
   
   class Config < ConfigBase
     
@@ -8,12 +8,12 @@ class Mysql2psql
       unless File.exists?(configfilepath)
         reset_configfile(configfilepath) if generate_default_if_not_found
         if File.exists?(configfilepath) 
-          raise Mysql2psql::ConfigurationFileInitialized.new("\n
+          raise Xmysql2psql::ConfigurationFileInitialized.new("\n
 No configuration file found.
 A new file has been initialized at: #{configfilepath}
 Please review the configuration and retry..\n\n\n")
         else
-          raise Mysql2psql::ConfigurationFileNotFound.new("cannot load config file #{configfilepath}")
+          raise Xmysql2psql::ConfigurationFileNotFound.new("cannot load config file #{configfilepath}")
         end
       end
       super(configfilepath)
@@ -33,9 +33,9 @@ mysql:
  hostname: localhost
  port: 3306
  socket: /tmp/mysql.sock
- username: mysql2psql
+ username: xmysql2psql
  password: 
- database: mysql2psql_test
+ database: xmysql2psql_test
 
 destination:
  # if file is given, output goes to file, else postgres
@@ -43,9 +43,9 @@ destination:
  postgres:
   hostname: localhost
   port: 5432
-  username: mysql2psql
+  username: xmysql2psql
   password: 
-  database: mysql2psql_test
+  database: xmysql2psql_test
 
 # if tables is given, only the listed tables will be converted.  leave empty to convert all tables.
 #tables:

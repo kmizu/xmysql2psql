@@ -1,4 +1,4 @@
-class Mysql2psql
+class Xmysql2psql
 
   class Writer
   end

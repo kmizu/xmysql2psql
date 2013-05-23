@@ -1,8 +1,8 @@
 require 'pg'
 
-require 'mysql2psql/postgres_writer'
+require 'xmysql2psql/postgres_writer'
 
-class Mysql2psql
+class Xmysql2psql
 
 class PostgresDbWriter < PostgresWriter
   attr_reader :conn, :hostname, :login, :password, :database, :schema, :port

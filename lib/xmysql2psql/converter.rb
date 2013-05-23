@@ -1,4 +1,4 @@
-class Mysql2psql
+class Xmysql2psql
 
   class Converter
     attr_reader :reader, :writer, :options
@@ -47,7 +47,7 @@ class Mysql2psql
       puts "Table creation #{((_time2 - _time1) / 60).round} min, loading #{((_time3 - _time2) / 60).round} min, indexing #{((_time4 - _time3) / 60).round} min, total #{((_time4 - _time1) / 60).round} min"
       return 0
     rescue => e
-      $stderr.puts "Mysql2psql: conversion failed: #{e.to_s}"
+      $stderr.puts "Xmysql2psql: conversion failed: #{e.to_s}"
       return -1
     end
   end

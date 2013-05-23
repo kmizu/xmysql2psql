@@ -1,21 +1,21 @@
-require 'mysql2psql/errors'
-require 'mysql2psql/version'
-require 'mysql2psql/config'
-require 'mysql2psql/converter'
-require 'mysql2psql/mysql_reader'
-require 'mysql2psql/writer'
-require 'mysql2psql/postgres_writer'
-require 'mysql2psql/postgres_db_writer.rb'
-require 'mysql2psql/postgres_file_writer.rb'
+require 'xmysql2psql/errors'
+require 'xmysql2psql/version'
+require 'xmysql2psql/config'
+require 'xmysql2psql/converter'
+require 'xmysql2psql/mysql_reader'
+require 'xmysql2psql/writer'
+require 'xmysql2psql/postgres_writer'
+require 'xmysql2psql/postgres_db_writer.rb'
+require 'xmysql2psql/postgres_file_writer.rb'
 
 
-class Mysql2psql
+class Xmysql2psql
   
   attr_reader :options, :reader, :writer
   
   def initialize(args)
     help if args.length==1 && args[0] =~ /^-.?|^-*he?l?p?$/i 
-    configfile = args[0] || File.expand_path('mysql2psql.yml')
+    configfile = args[0] || File.expand_path('xmysql2psql.yml')
     @options = Config.new( configfile, true )
   end
   

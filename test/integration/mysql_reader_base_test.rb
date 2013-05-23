@@ -1,6 +1,6 @@
 require 'test_helper'
 
-require 'mysql2psql/mysql_reader'
+require 'xmysql2psql/mysql_reader'
 
 class MysqlReaderBaseTest < Test::Unit::TestCase
 
@@ -23,12 +23,12 @@ class MysqlReaderBaseTest < Test::Unit::TestCase
   
   def test_mysql_connection
     assert_nothing_raised do
-      reader = Mysql2psql::MysqlReader.new(options)
+      reader = Xmysql2psql::MysqlReader.new(options)
     end
   end
   def test_mysql_reconnect
     assert_nothing_raised do
-      reader = Mysql2psql::MysqlReader.new(options)
+      reader = Xmysql2psql::MysqlReader.new(options)
       reader.reconnect
     end
   end

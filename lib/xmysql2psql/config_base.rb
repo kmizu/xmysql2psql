@@ -1,7 +1,7 @@
 require 'yaml'
-require 'mysql2psql/errors'
+require 'xmysql2psql/errors'
 
-class Mysql2psql
+class Xmysql2psql
   
   class ConfigBase
     attr_reader :config, :filepath
@@ -32,7 +32,7 @@ class Mysql2psql
       else
         value=config[token]
       end
-      value.nil? ? ( must_be_defined ? (raise Mysql2psql::UninitializedValueError.new("no value and no default for #{name}")) : default ) : value
+      value.nil? ? ( must_be_defined ? (raise Xmysql2psql::UninitializedValueError.new("no value and no default for #{name}")) : default ) : value
     end
   end
   

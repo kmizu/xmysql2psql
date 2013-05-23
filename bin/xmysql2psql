@@ -2,6 +2,6 @@
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'rubygems'
-require 'mysql2psql'
+require 'xmysql2psql'
 
-exit Mysql2psql.new(ARGV).convert
+exit Xmysql2psql.new(ARGV).convert

@@ -1,5 +1,5 @@
 
-class Mysql2psql
+class Xmysql2psql
   
   class GeneralError < StandardError
 	end

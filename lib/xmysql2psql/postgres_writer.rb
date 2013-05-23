@@ -1,8 +1,8 @@
 require 'pg'
 
-require 'mysql2psql/writer'
+require 'xmysql2psql/writer'
 
-class Mysql2psql
+class Xmysql2psql
 
   class PostgresWriter < Writer
     def column_description(column)

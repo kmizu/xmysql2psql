@@ -1,6 +1,6 @@
 require 'test_helper'
 
-require 'mysql2psql/postgres_db_writer'
+require 'xmysql2psql/postgres_db_writer'
 
 class PostgresDbWriterBaseTest < Test::Unit::TestCase
 
@@ -23,7 +23,7 @@ class PostgresDbWriterBaseTest < Test::Unit::TestCase
   
   def test_pg_connection
     assert_nothing_raised do
-      reader = Mysql2psql::PostgresDbWriter.new(options)
+      reader = Xmysql2psql::PostgresDbWriter.new(options)
     end
   end
 

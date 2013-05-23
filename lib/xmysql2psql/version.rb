@@ -1,4 +1,4 @@
-class Mysql2psql
+class Xmysql2psql
   module Version
     MAJOR = 0
     MINOR = 1

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-require 'mysql2psql/converter'
+require 'xmysql2psql/converter'
 
 class ConverterTest < Test::Unit::TestCase
 
@@ -25,7 +25,7 @@ class ConverterTest < Test::Unit::TestCase
     assert_nothing_raised do
       reader=get_test_reader(options)
       writer=get_test_file_writer(options)
-      converter=Mysql2psql::Converter.new(reader,writer,options)
+      converter=Xmysql2psql::Converter.new(reader,writer,options)
       assert_equal 0,converter.convert
     end
   end

@@ -1,5 +1,5 @@
 require 'test_helper'
-require 'mysql2psql/config_base'
+require 'xmysql2psql/config_base'
 
 #
 #
@@ -7,7 +7,7 @@ class ConfigBaseTest < Test::Unit::TestCase
   attr_reader :config, :configfilepath
   def setup
     @configfilepath="#{File.dirname(__FILE__)}/../fixtures/config_all_options.yml"
-    @config = Mysql2psql::ConfigBase.new( configfilepath )
+    @config = Xmysql2psql::ConfigBase.new( configfilepath )
   end
   
   def teardown
@@ -20,7 +20,7 @@ class ConfigBaseTest < Test::Unit::TestCase
   end
 
   def test_uninitialized_error_when_not_found_and_no_default
-    assert_raises(Mysql2psql::UninitializedValueError) do
+    assert_raises(Xmysql2psql::UninitializedValueError) do
       value = @config.not_found(:none)
     end
   end

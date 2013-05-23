@@ -1,6 +1,6 @@
-require 'mysql2psql/postgres_writer'
+require 'xmysql2psql/postgres_writer'
 
-class Mysql2psql
+class Xmysql2psql
 
 class PostgresFileWriter < PostgresWriter
   def initialize(file)

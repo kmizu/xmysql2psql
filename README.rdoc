@@ -8,7 +8,7 @@ It can translate now most data types and indexes, but if you experience some pro
 to contact me, I'll help you.
 
 == Installation
-Mysql2psql is packaged as a gem. Install as usual (use sudo if required).
+Xmysql2psql is packaged as a gem. Install as usual (use sudo if required).
 
   $ gem install mysql2psql
   NB: the gem hasn't been formally released on http://rubygems.org/ yet. For now you need to clone the git repo at http://github.com/tardate/mysql2postgres and 'rake install' 
@@ -17,11 +17,11 @@ After installation, the "mysql2psql" command will be available.
 When run, it will generate a default configuration file in the current directory if a config
 file is not already found. The default configuration filename is mysql2psql.yml.
 
-  $ mysql2psql
+  $ xmysql2psql
 
 You can use an alternate config file by passing the filename/path as a parameter:
 
-  $ mysql2psql ../another/world.yml
+  $ xmysql2psql ../another/world.yml
 
 == Running Migrations
 See the configuration file for documentation about settings. Key choices include:
@@ -42,24 +42,16 @@ After editing the configuration file and launching tool, you will see something 
 
 
 == Database driver dependencies
-Mysql2psql uses the 'mysql' and 'pg' gems for database connectivity. 
-Mysql2psql gem installation should automatically install these too.
+Xmysql2psql uses the 'mysql2' and 'pg' gems for database connectivity. 
+Xmysql2psql gem installation should automatically install these too.
 
 If you encounter any issues with db connectivity, verify that the 'mysql' and 'pg' gems are installed and working correctly first.
 The 'mysql' gem in particular may need a hint on where to find the mysql headers and libraries:
 
   $ [sudo] gem install mysql -- --with-mysql-dir=/usr/local/mysql
-  
-NB: With Ruby 1.8.x, the gem install will usually complain about "No definition for ..." errors. These are non-fatal and just affect the documentation install. This doesn't happen with Ruby 1.9.2.
 
 == Getting the source
-Mysql2psql was first produced by Max Lapshin <max@maxidoors.ru> who maintains the master 
-repository at http://github.com/maxlapshin/mysql2postgres
-
-The gem packaged version you are currently looking at has yet to be merged into the master repo.
-The gem bundling and refactoring for testing was done by Paul Gallagher <gallagher.paul@gmail.com> and
-the repository is at http://github.com/tardate/mysql2postgres
-
+Xmysql2psql's source is located at http://github.com/kmizu/xmysql2psql
 
 == Running tests
 If you fork/clone the project, you will want to run the test suite (and add to it if you are developing new features or fixing bugs).
@@ -71,28 +63,28 @@ A suite of tests are provided and are run using rake (rake -T for more info)
 
 Rake without parameters (or "rake test") will run both the unit and integration tests.
 
-Unit tests are small standalone tests of the mysql2psql codebase that have no external dependencies (like a database)
+Unit tests are small standalone tests of the xmysql2psql codebase that have no external dependencies (like a database)
 
 Integration tests require suitable mysql and postgres databases to be setup in advance. 
-Running the integration tests *will* rewrite data and schema for the "mysql2psql_test" databases in mysql and postgres. Don't use this database for anything else!
+Running the integration tests *will* rewrite data and schema for the "xmysql2psql_test" databases in mysql and postgres. Don't use this database for anything else!
 
 mysql on localhost:3306
-- database created called "mysql2psql_test"
-- user setup for "mysql2psql" with no password
+- database created called "xmysql2psql_test"
+- user setup for "xmysql2psql" with no password
 - e.g. 
-  mysqladmin -uroot -p create mysql2psql_test
-  mysql -uroot -p -e "grant all on mysql2psql_test.* to 'mysql2psql'@'localhost';"
+  mysqladmin -uroot -p create xmysql2psql_test
+  mysql -uroot -p -e "grant all on xmysql2psql_test.* to 'mysql2psql'@'localhost';"
   # verify connecction:
-  mysql -umysql2psql -e "select database(),'yes' as connected" mysql2psql_test
+  mysql -uxmysql2psql -e "select database(),'yes' as connected" mysql2psql_test
   
 postgres on localhost:5432
-- database created called "mysql2psql_test" 
-- role (user) access setup for "mysql2psql" with no password
+- database created called "xmysql2psql_test" 
+- role (user) access setup for "xmysql2psql" with no password
 - e.g.
-  psql postgres -c "create role mysql2psql with login"
-  psql postgres -c "create database mysql2psql_test with owner mysql2psql encoding='UTF8'"
+  psql postgres -c "create role xmysql2psql with login"
+  psql postgres -c "create database xmysql2psql_test with owner xmysql2psql encoding='UTF8'"
   # verify connection:
-  psql mysql2psql_test -U mysql2psql -c "\c"
+  psql xmysql2psql_test -U xmysql2psql -c "\c"
 
 == Notes, Limitations, Outstanding Issues..
 

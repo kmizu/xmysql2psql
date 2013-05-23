@@ -4,17 +4,17 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{mysql2psql}
+  s.name = %q{xmysql2psql}
   s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Max Lapshin <max@maxidoors.ru>", "Anton Ageev <anton@ageev.name>", "Samuel Tribehou <cracoucax@gmail.com>", "Marco Nenciarini <marco.nenciarini@devise.it>", "James Nobis <jnobis@jnobis.controldocs.com>", "quel <github@quelrod.net>", "Holger Amann <keeney@fehu.org>", "Maxim Dobriakov <closer.main@gmail.com>", "Michael Kimsal <mgkimsal@gmail.com>", "Jacob Coby <jcoby@portallabs.com>", "Neszt Tibor <neszt@tvnetwork.hu>", "Miroslav Kratochvil <exa.exa@gmail.com>", "Paul Gallagher <gallagher.paul@gmail.com>"]
+  s.authors = ["Kota Mizushima <mizukota@gmail.com>"]
   s.date = %q{2010-09-19}
-  s.default_executable = %q{mysql2psql}
+  s.default_executable = %q{xmysql2psql}
   s.description = %q{It can create postgresql dump from mysql database or directly load data from mysql to
     postgresql (at about 100 000 records per minute). Translates most data types and indexes.}
   s.email = %q{gallagher.paul@gmail.com}
-  s.executables = ["mysql2psql"]
+  s.executables = ["xmysql2psql"]
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
@@ -23,19 +23,19 @@ Gem::Specification.new do |s|
      "MIT-LICENSE",
      "README.rdoc",
      "Rakefile",
-     "bin/mysql2psql",
-     "lib/mysql2psql.rb",
-     "lib/mysql2psql/config.rb",
-     "lib/mysql2psql/config_base.rb",
-     "lib/mysql2psql/converter.rb",
-     "lib/mysql2psql/errors.rb",
-     "lib/mysql2psql/mysql_reader.rb",
-     "lib/mysql2psql/postgres_db_writer.rb",
-     "lib/mysql2psql/postgres_file_writer.rb",
-     "lib/mysql2psql/postgres_writer.rb",
-     "lib/mysql2psql/version.rb",
-     "lib/mysql2psql/writer.rb",
-     "mysql2psql.gemspec",
+     "bin/xmysql2psql",
+     "lib/xmysql2psql.rb",
+     "lib/xmysql2psql/config.rb",
+     "lib/xmysql2psql/config_base.rb",
+     "lib/xmysql2psql/converter.rb",
+     "lib/xmysql2psql/errors.rb",
+     "lib/xmysql2psql/mysql_reader.rb",
+     "lib/xmysql2psql/postgres_db_writer.rb",
+     "lib/xmysql2psql/postgres_file_writer.rb",
+     "lib/xmysql2psql/postgres_writer.rb",
+     "lib/xmysql2psql/version.rb",
+     "lib/xmysql2psql/writer.rb",
+     "xmysql2psql.gemspec",
      "test/fixtures/config_all_options.yml",
      "test/fixtures/seed_integration_tests.sql",
      "test/integration/convert_to_db_test.rb",
@@ -50,7 +50,7 @@ Gem::Specification.new do |s|
      "test/units/config_test.rb",
      "test/units/postgres_file_writer_test.rb"
   ]
-  s.homepage = %q{http://github.com/tardate/mysql2postgresql}
+  s.homepage = %q{http://github.com/kmizu/xmysql2psql}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
@@ -69,23 +69,13 @@ Gem::Specification.new do |s|
      "test/units/postgres_file_writer_test.rb"
   ]
 
-  if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
-    s.specification_version = 3
+  s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<mysql>, ["= 2.8.1"])
-      s.add_runtime_dependency(%q<pg>, ["= 0.9.0"])
-      s.add_development_dependency(%q<test-unit>, [">= 2.1.1"])
-    else
-      s.add_dependency(%q<mysql>, ["= 2.8.1"])
-      s.add_dependency(%q<pg>, ["= 0.9.0"])
-      s.add_dependency(%q<test-unit>, [">= 2.1.1"])
-    end
-  else
-    s.add_dependency(%q<mysql>, ["= 2.8.1"])
-    s.add_dependency(%q<pg>, ["= 0.9.0"])
-    s.add_dependency(%q<test-unit>, [">= 2.1.1"])
-  end
+  s.add_runtime_dependency(%q<mysql2>, ["= 0.3.11"])
+  s.add_runtime_dependency(%q<pg>, ["= 1.5.0"])
+  s.add_development_dependency(%q<test-unit>, [">= 2.5.5"])
+  s.add_dependency(%q<mysql>, ["= 2.8.1"])
+  s.add_dependency(%q<pg>, ["= 0.9.0"])
+  s.add_dependency(%q<test-unit>, [">= 2.1.1"])
 end
 
