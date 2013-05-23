@@ -27,7 +27,9 @@ rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
+require 'rake/tasklib'
 require 'rake/testtask'
+require 'rdoc/task'
 namespace :test do
   Rake::TestTask.new(:units) do |test|
     test.libs << 'lib' << 'test/lib'
@@ -64,7 +66,9 @@ end
 
 task :default => :test
 
-require 'rake/rdoctask'
+require 'rake/tasklib'
+require 'rake/testtask'
+require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   version = Xmysql2psql::Version::STRING
 

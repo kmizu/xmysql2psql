@@ -42,7 +42,7 @@ After editing the configuration file and launching tool, you will see something 
 
 
 == Database driver dependencies
-Xmysql2psql uses the 'mysql2' and 'pg' gems for database connectivity. 
+Xmysql2psql uses the 'mysql2' and 'pg' gems for database connectivity.
 Xmysql2psql gem installation should automatically install these too.
 
 If you encounter any issues with db connectivity, verify that the 'mysql' and 'pg' gems are installed and working correctly first.
