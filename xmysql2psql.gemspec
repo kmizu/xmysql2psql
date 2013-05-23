@@ -72,7 +72,7 @@ Gem::Specification.new do |s|
   s.specification_version = 3
 
   s.add_runtime_dependency(%q<mysql2>, ["= 0.3.11"])
-  s.add_runtime_dependency(%q<pg>, ["= 1.5.0"])
+  s.add_runtime_dependency(%q<pg>, [">= 0.15.0"])
   s.add_development_dependency(%q<test-unit>, [">= 2.5.5"])
   s.add_dependency(%q<mysql>, ["= 2.8.1"])
   s.add_dependency(%q<pg>, ["= 0.9.0"])
