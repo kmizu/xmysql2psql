@@ -9,10 +9,14 @@ class Xmysql2psql
       raise StandardError.new("not implemented")
     end
     
+    def escape_bytea(value)
+      "\\\\x" << (value.unpack('C*').map{ |b| "%02X" % b }.join(''))
+    end
+
     def column_description(column)
       "#{PGconn.quote_ident(column[:name])} #{column_type_info(column)}"
     end
-  
+
     def column_type(column)
       column_type_info(column).split(" ").first
     end
@@ -129,11 +133,7 @@ class Xmysql2psql
         
           if row[index].is_a?(String)
             if column_type(column) == "bytea"
-              if self.db_writer?
-                escaped_bin = self.conn.escape_bytea(row[index])
-              else
-                escaped_bin = PGconn.escape_bytea(row[index])
-              end
+              escaped_bin = escape_bytea(row[index])
               row[index] = escaped_bin
             else
               row[index] = row[index].gsub(/\\/, '\\\\\\').gsub(/\n/,'\n').gsub(/\t/,'\t').gsub(/\r/,'\r').gsub(/\0/, '')
