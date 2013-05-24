@@ -5,6 +5,10 @@ require 'xmysql2psql/writer'
 class Xmysql2psql
 
   class PostgresWriter < Writer
+    def db_writer?
+      raise StandardError.new("not implemented")
+    end
+    
     def column_description(column)
       "#{PGconn.quote_ident(column[:name])} #{column_type_info(column)}"
     end
@@ -125,7 +129,12 @@ class Xmysql2psql
         
           if row[index].is_a?(String)
             if column_type(column) == "bytea"
-              row[index] = PGconn.escape_bytea(row[index])
+              if self.db_writer?
+                escaped_bin = self.conn.escape_bytea(row[index])
+              else
+                escaped_bin = PGconn.escape_bytea(row[index])
+              end
+              row[index] = escaped_bin
             else
               row[index] = row[index].gsub(/\\/, '\\\\\\').gsub(/\n/,'\n').gsub(/\t/,'\t').gsub(/\r/,'\r').gsub(/\0/, '')
             end

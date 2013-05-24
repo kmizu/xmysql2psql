@@ -7,6 +7,10 @@ class Xmysql2psql
 class PostgresDbWriter < PostgresWriter
   attr_reader :conn, :hostname, :login, :password, :database, :schema, :port
   
+  def db_writer?
+    true
+  end
+  
   def initialize(options)
     @hostname, @login, @password, @database, @port =  
       options.pghostname('localhost'), options.pgusername, 

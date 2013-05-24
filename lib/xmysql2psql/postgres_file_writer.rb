@@ -15,6 +15,10 @@ SET client_min_messages = warning;
 EOF
   end
   
+  def db_writer?
+    false
+  end
+  
   def truncate(table)
     serial_key = nil
     maxval = nil
