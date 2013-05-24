@@ -10,7 +10,11 @@ class Xmysql2psql
     end
     
     def escape_bytea(value)
-      "\\\\x" << (value.unpack('C*').map{ |b| "%02X" % b }.join(''))
+      if db_writer?
+        self.conn.escape_bytea(value)
+      else
+        PGConn.escape_bytea(value)
+      end
     end
 
     def column_description(column)
@@ -37,7 +41,6 @@ class Xmysql2psql
         "character(#{column[:length]})"
       when "varchar"
         default = default + "::character varying" if default
-  #      puts "VARCHAR: #{column.inspect}"
         "character varying(#{column[:length]})"
       
       # Integer and numeric types
@@ -133,8 +136,7 @@ class Xmysql2psql
         
           if row[index].is_a?(String)
             if column_type(column) == "bytea"
-              escaped_bin = escape_bytea(row[index])
-              row[index] = escaped_bin
+              row[index] = escape_bytea(row[index])
             else
               row[index] = row[index].gsub(/\\/, '\\\\\\').gsub(/\n/,'\n').gsub(/\t/,'\t').gsub(/\r/,'\r').gsub(/\0/, '')
             end
