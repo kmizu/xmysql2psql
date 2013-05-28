@@ -162,7 +162,7 @@ class Xmysql2psql
       @host, @user, @passwd, @db, @port, @sock, @flag = 
         options.mysqlhostname('localhost'), options.mysqlusername, 
         options.mysqlpassword, options.mysqldatabase, 
-        options.mysqlport, options.mysqlsocket, 0
+        options.mysqlport, options.mysqlsocket, Mysql::CLIENT_COMPRESS
       connect
     end
   
