@@ -4,19 +4,7 @@ end
 
 source 'https://rubygems.org'
 
-gem 'mysql-pr'
-gem 'postgres-pr'
-
-platforms :jruby do
-  gem 'activerecord'
-  gem 'jdbc-postgres'
-  gem 'activerecord-jdbc-adapter'
-  gem 'activerecord-jdbcpostgresql-adapter'
-end
-
-platforms :mri_19 do
-  gem 'pg'
-  gem 'mysql2'
-end
+gem 'pg'
+gem 'mysql'
 
 gem 'test-unit'

@@ -1,22 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    mysql-pr (2.9.11)
-    mysql2 (0.3.11)
+    mysql (2.9.1)
     pg (0.15.1)
-    postgres-pr (0.6.3)
     test-unit (2.5.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord
-  activerecord-jdbc-adapter
-  activerecord-jdbcpostgresql-adapter
-  jdbc-postgres
-  mysql-pr
-  mysql2
+  mysql
   pg
-  postgres-pr
   test-unit

@@ -1,4 +1,4 @@
-require 'mysql-pr'
+require 'mysql'
 
 class Xmysql2psql
 
@@ -15,7 +15,7 @@ class Xmysql2psql
       end
     
       @@types = %w(tiny enum decimal short long float double null timestamp longlong int24 date time datetime year set blob string var_string char).inject({}) do |list, type|
-        list[eval("::MysqlPR::Field::TYPE_#{type.upcase}")] = type
+        list[eval("::Mysql::Field::TYPE_#{type.upcase}")] = type
         list
       end
     
@@ -55,7 +55,7 @@ class Xmysql2psql
       def load_columns
         @reader.reconnect
         result = @reader.mysql.list_fields(name)
-        mysql_flags = ::MysqlPR::Field.constants.select {|c| c =~ /FLAG/}
+        mysql_flags = ::Mysql::Field.constants.select {|c| c =~ /FLAG/}
         fields = []
         @reader.mysql.query("EXPLAIN `#{name}`") do |res|
           while field = res.fetch_row do
@@ -148,7 +148,7 @@ class Xmysql2psql
     end
   
     def connect
-      @mysql = ::MysqlPR.connect(@host, @user, @passwd, @db, @port, @sock, @flag)
+      @mysql = ::Mysql.connect(@host, @user, @passwd, @db, @port, @sock, @flag)
       @mysql.query("SET NAMES utf8")
       @mysql.query("SET SESSION query_cache_type = OFF")
     end

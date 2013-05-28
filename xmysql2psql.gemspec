@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kota Mizushima <mizukota@gmail.com>"]
-  s.date = %q{2010-09-19}
+  s.date = %q{2013-05-28}
   s.default_executable = %q{xmysql2psql}
   s.description = %q{It can create postgresql dump from mysql database or directly load data from mysql to
     postgresql (at about 100 000 records per minute). Translates most data types and indexes.}
@@ -71,11 +71,9 @@ Gem::Specification.new do |s|
 
   s.specification_version = 3
 
-  s.add_runtime_dependency(%q<mysql2>, ["= 0.3.11"])
   s.add_runtime_dependency(%q<pg>, [">= 0.15.0"])
   s.add_development_dependency(%q<test-unit>, [">= 2.5.5"])
   s.add_dependency(%q<mysql>, ["= 2.8.1"])
-  s.add_dependency(%q<pg>, ["= 0.9.0"])
   s.add_dependency(%q<test-unit>, [">= 2.1.1"])
 end
 
