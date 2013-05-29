@@ -152,7 +152,7 @@ class PostgresDbWriter < PostgresWriter
     puts "Rows counted"
     puts "Loading #{table.name}..."
     STDOUT.flush
-    _counter = reader.paginated_read(table, 1000) do |row, counter|
+    _counter = reader.paginated_read(table, 1000000) do |row, counter|
       line = []
       process_row(table, row)
       @conn.put_copy_data(row.join("\t") + "\n")
