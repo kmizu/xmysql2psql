@@ -152,12 +152,12 @@ class PostgresDbWriter < PostgresWriter
     puts "Rows counted"
     puts "Loading #{table.name}..."
     STDOUT.flush
-    _counter = reader.paginated_read(table, 5000) do |row, counter|
+    _counter = reader.paginated_read(table, 1000) do |row, counter|
       line = []
       process_row(table, row)
       @conn.put_copy_data(row.join("\t") + "\n")
        
-      if counter != 0 && counter % 50000 == 0
+      if counter != 0 && counter % 20000 == 0
         elapsedTime = Time.now - _time1
         eta = elapsedTime * rowcount / counter - elapsedTime
         etaf = self.format_eta(eta)
@@ -166,7 +166,7 @@ class PostgresDbWriter < PostgresWriter
         STDOUT.flush
       end
       
-      if counter % 10000 == 0
+      if counter % 5000 == 0
         @conn.put_copy_end
         @conn.exec(copy_line)
       end
